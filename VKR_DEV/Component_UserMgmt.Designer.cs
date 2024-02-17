@@ -38,6 +38,9 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripStatusLabel3 = new ToolStripStatusLabel();
             toolStripStatusLabel4 = new ToolStripStatusLabel();
+            статусToolStripMenuItem = new ToolStripMenuItem();
+            активенToolStripMenuItem = new ToolStripMenuItem();
+            неактивенToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -78,14 +81,14 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem, статусToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(119, 26);
+            contextMenuStrip1.Size = new Size(181, 70);
             // 
             // удалитьToolStripMenuItem
             // 
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            удалитьToolStripMenuItem.Size = new Size(118, 22);
+            удалитьToolStripMenuItem.Size = new Size(180, 22);
             удалитьToolStripMenuItem.Text = "Удалить";
             удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
@@ -122,6 +125,27 @@
             toolStripStatusLabel4.Size = new Size(118, 17);
             toolStripStatusLabel4.Text = "toolStripStatusLabel4";
             // 
+            // статусToolStripMenuItem
+            // 
+            статусToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { активенToolStripMenuItem, неактивенToolStripMenuItem });
+            статусToolStripMenuItem.Name = "статусToolStripMenuItem";
+            статусToolStripMenuItem.Size = new Size(180, 22);
+            статусToolStripMenuItem.Text = "Статус";
+            // 
+            // активенToolStripMenuItem
+            // 
+            активенToolStripMenuItem.Name = "активенToolStripMenuItem";
+            активенToolStripMenuItem.Size = new Size(180, 22);
+            активенToolStripMenuItem.Text = "Активен";
+            активенToolStripMenuItem.Click += активенToolStripMenuItem_Click;
+            // 
+            // неактивенToolStripMenuItem
+            // 
+            неактивенToolStripMenuItem.Name = "неактивенToolStripMenuItem";
+            неактивенToolStripMenuItem.Size = new Size(180, 22);
+            неактивенToolStripMenuItem.Text = "Неактивен";
+            неактивенToolStripMenuItem.Click += неактивенToolStripMenuItem_Click;
+            // 
             // Component_UserMgmt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,5 +175,8 @@
         private ToolStripMenuItem удалитьToolStripMenuItem;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private ToolStripStatusLabel toolStripStatusLabel4;
+        private ToolStripMenuItem статусToolStripMenuItem;
+        private ToolStripMenuItem активенToolStripMenuItem;
+        private ToolStripMenuItem неактивенToolStripMenuItem;
     }
 }

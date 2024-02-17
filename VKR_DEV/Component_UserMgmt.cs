@@ -78,6 +78,32 @@ namespace VKR_DEV
             toolStripStatusLabel2.Text = (count_rows).ToString();
         }
 
+        //Метод удаления пользователей
+        public void DeleteUser()
+        {
+            //Формируем строку запроса на добавление строк
+            string sql_delete_user = "DELETE FROM T_Users WHERE idUsers='" + id_selected_rows + "'";
+            //Посылаем запрос на обновление данных
+            MySqlCommand delete_user = new MySqlCommand(sql_delete_user, conn);
+            try
+            {
+                conn.Open();
+                delete_user.ExecuteNonQuery();
+                MessageBox.Show("Удаление прошло успешно", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка удаления строки \n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            finally
+            {
+                conn.Close();
+                //Вызов метода обновления ДатаГрида
+                reload_list();
+            }
+        }
+
         private void Component_UserMgmt_Load(object sender, EventArgs e)
         {
             // строка подключения к БД
@@ -126,7 +152,7 @@ namespace VKR_DEV
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mes
+            DeleteUser();
         }
 
         //Метод получения ID выделенной строки, для последующего вызова его в нужных методах
@@ -161,6 +187,48 @@ namespace VKR_DEV
                 //Метод получения ID выделенной строки в глобальную переменную
                 GetSelectedIDString();
             }
+        }
+
+        public void ChangeStatusEmploy(string new_state)
+        {
+            //Получаем ID изменяемого студента
+            string redact_id = id_selected_rows;
+            // запрос обновления данных
+            string query2 = $"UPDATE T_Users SET enabledUsers='{new_state}' WHERE (idUsers='{id_selected_rows}')";
+            // объект для выполнения SQL-запроса
+            MySqlCommand command = new MySqlCommand(query2, conn);
+            
+            
+            try
+            {
+                // устанавливаем соединение с БД
+                conn.Open();
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                MessageBox.Show("Изменение статуса прошло успешно", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка изменения строки \n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            finally
+            {
+                // закрываем подключение к БД
+                conn.Close();
+                //Обновляем DataGrid
+                reload_list();
+            }
+        }
+
+        private void активенToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeStatusEmploy("1");
+        }
+
+        private void неактивенToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeStatusEmploy("0");
         }
     }
 }
