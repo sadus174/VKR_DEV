@@ -50,7 +50,7 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 289);
+            statusStrip1.Location = new Point(0, 141);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(339, 22);
             statusStrip1.TabIndex = 1;
@@ -91,12 +91,13 @@
             button4.TabIndex = 4;
             button4.Text = "Управление пользователя";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(339, 311);
+            ClientSize = new Size(339, 163);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);

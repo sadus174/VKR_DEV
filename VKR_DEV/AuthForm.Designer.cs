@@ -67,6 +67,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(189, 23);
             textBox1.TabIndex = 0;
+            textBox1.Text = "adm";
             // 
             // label1
             // 
@@ -99,6 +100,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(189, 23);
             textBox2.TabIndex = 3;
+            textBox2.Text = "123";
             // 
             // button1
             // 

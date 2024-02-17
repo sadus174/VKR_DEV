@@ -14,14 +14,14 @@ namespace VKR_DEV
             AuthForm authForm = new AuthForm();
             authForm.ShowDialog();
 
-            if(!AuthClass.IsAuthenticated)
+            if (!AuthClass.IsAuthenticated)
             {
                 Application.Exit();
             }
 
             toolStripStatusLabel1.Text = $"Добро пожаловать {AuthClass.auth_fio}! Ваш код {AuthClass.auth_id.ToString()}";
 
-            switch(AuthClass.auth_role)
+            switch (AuthClass.auth_role)
             {
                 case 3:
                     button1.Enabled = true;
@@ -44,6 +44,12 @@ namespace VKR_DEV
                     break;
             }
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Component_UserMgmt component_UserMgmt = new Component_UserMgmt();
+            component_UserMgmt.ShowDialog();
         }
     }
 }
