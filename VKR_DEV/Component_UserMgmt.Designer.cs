@@ -51,12 +51,12 @@
             label5 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            textBox3 = new TextBox();
             comboBox1 = new ComboBox();
             button1 = new Button();
             textBox4 = new TextBox();
             button2 = new Button();
             button3 = new Button();
+            comboBox2 = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -192,12 +192,12 @@
             tableLayoutPanel2.Controls.Add(label5, 2, 1);
             tableLayoutPanel2.Controls.Add(textBox1, 1, 0);
             tableLayoutPanel2.Controls.Add(textBox2, 1, 1);
-            tableLayoutPanel2.Controls.Add(textBox3, 1, 2);
             tableLayoutPanel2.Controls.Add(comboBox1, 3, 1);
             tableLayoutPanel2.Controls.Add(button1, 1, 3);
             tableLayoutPanel2.Controls.Add(textBox4, 3, 0);
             tableLayoutPanel2.Controls.Add(button2, 0, 3);
             tableLayoutPanel2.Controls.Add(button3, 3, 3);
+            tableLayoutPanel2.Controls.Add(comboBox2, 1, 2);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 297);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -280,14 +280,6 @@
             textBox2.Size = new Size(232, 23);
             textBox2.TabIndex = 8;
             // 
-            // textBox3
-            // 
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Location = new Point(161, 67);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(232, 23);
-            textBox3.TabIndex = 9;
-            // 
             // comboBox1
             // 
             comboBox1.Dock = DockStyle.Fill;
@@ -338,6 +330,15 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // comboBox2
+            // 
+            comboBox2.Dock = DockStyle.Fill;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(161, 67);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(232, 23);
+            comboBox2.TabIndex = 16;
+            // 
             // Component_UserMgmt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -382,11 +383,11 @@
         private Label label5;
         private TextBox textBox1;
         private TextBox textBox2;
-        private TextBox textBox3;
         private ComboBox comboBox1;
         private Button button1;
         private TextBox textBox4;
         private Button button2;
         private Button button3;
+        private ComboBox comboBox2;
     }
 }

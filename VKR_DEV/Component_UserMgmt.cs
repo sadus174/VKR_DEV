@@ -47,18 +47,17 @@ namespace VKR_DEV
         public void GetListUsers()
         {
             //Объявление запроса
-            string sqlQueryLoadUsers = "SELECT " +
-                "T_Users.idUsers AS 'Код', " +
-                "T_Users.fioUsers AS 'ФИО',	" +
+            string sqlQueryLoadUsers = "SELECT 	" +
+                "T_Users.idUsers AS 'Код', 	" +
+                "T_Empl.fioEmpl AS 'ФИО', 	" +
                 "T_Users.loginUsers AS 'Логин', 	" +
-                "T_Users.enabledUsers AS 'Состояние', 	" +
-                "T_Role.titleRole AS 'Роль' " +
-                "FROM " +
-                "T_Users 	" +
-                "INNER JOIN 	" +
-                "T_Role 	" +
-                "ON 		" +
-                "T_Users.roleUsers = T_Role.idRole";
+                "T_Users.enabledUsers AS 'Активность', 	" +
+                "T_Role.titleRole  AS 'Роль'" +
+                "FROM	T_Users3" +
+                "INNER JOIN	T_Empl	" +
+                "ON 		T_Users.fioUsers = T_Empl.idEmpl	" +
+                "INNER JOIN	T_Role	" +
+                "ON 		T_Users.roleUsers = T_Role.idRole";
 
             //Открываем соединение
             conn.Open();
@@ -156,6 +155,7 @@ namespace VKR_DEV
             GetListUsers();
 
             GetComboBoxList();
+            GetComboBoxListEmpl();
 
             //Видимость полей в гриде
             dataGridView1.Columns[0].Visible = true;
@@ -271,17 +271,61 @@ namespace VKR_DEV
                 conn.Close();
             }
         }
+        public void GetComboBoxListEmpl()
+        {
+            //Формирование списка статусов
+            DataTable list_stud_table = new DataTable();
+            MySqlCommand list_stud_command = new MySqlCommand();
+            //Открываем соединение
+            conn.Open();
+            //Формируем столбцы для комбобокса списка ЦП
+            list_stud_table.Columns.Add(new DataColumn("idEmpl", System.Type.GetType("System.Int32")));
+            list_stud_table.Columns.Add(new DataColumn("fioEmpl", System.Type.GetType("System.String")));
+            //Настройка видимости полей комбобокса
+            comboBox2.DataSource = list_stud_table;
+            comboBox2.DisplayMember = "fioEmpl";
+            comboBox2.ValueMember = "idEmpl";
+            //Формируем строку запроса на отображение списка статусов прав пользователя
+            string sql_list_users = "SELECT idEmpl, fioEmpl FROM T_Empl";
+            list_stud_command.CommandText = sql_list_users;
+            list_stud_command.Connection = conn;
+            //Формирование списка ЦП для combobox'a
+            MySqlDataReader list_stud_reader;
+            try
+            {
+                //Инициализируем ридер
+                list_stud_reader = list_stud_command.ExecuteReader();
+                while (list_stud_reader.Read())
+                {
+                    DataRow rowToAdd = list_stud_table.NewRow();
+                    rowToAdd["idEmpl"] = Convert.ToInt32(list_stud_reader[0]);
+                    rowToAdd["fioEmpl"] = list_stud_reader[1].ToString();
+                    list_stud_table.Rows.Add(rowToAdd);
+                }
+                list_stud_reader.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка чтения списка ФИО \n\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         //Добавление новых пользователей
         private void button1_Click(object sender, EventArgs e)
         {
             string user_login = textBox1.Text;
             string password = textBox2.Text;
-            string fio = textBox3.Text;
+            int fio = Convert.ToInt32(comboBox2.SelectedValue);
             string status = textBox4.Text;
             int role = Convert.ToInt32(comboBox1.SelectedValue);
 
             string sql = $"INSERT INTO T_Users (loginUsers, passUsers, enabledUsers, roleUsers, fioUsers) " +
-                $"VALUES ('{user_login}', '{password}', {status}, {role.ToString()}, '{fio}')";
+                $"VALUES ('{user_login}', '{password}', {status}, {role.ToString()}, '{fio.ToString()}')";
 
             //MessageBox.Show(sql);
 
@@ -325,7 +369,7 @@ namespace VKR_DEV
                 // элементы массива [] - это значения столбцов из запроса SELECT
                 textBox1.Text = reader[1].ToString();
                 textBox2.Text = reader[2].ToString();
-                textBox3.Text = reader[5].ToString();
+                comboBox2.SelectedValue = reader[5].ToString();
                 textBox4.Text = reader[3].ToString();
                 comboBox1.SelectedValue = reader[4].ToString();
 
@@ -347,7 +391,7 @@ namespace VKR_DEV
         {
             string user_login = textBox1.Text;
             string password = textBox2.Text;
-            string fio = textBox3.Text;
+            int fio = Convert.ToInt32(comboBox2.SelectedValue);
             string status = textBox4.Text;
             int role = Convert.ToInt32(comboBox1.SelectedValue);
 
