@@ -51,5 +51,11 @@ namespace VKR_DEV
             Component_UserMgmt component_UserMgmt = new Component_UserMgmt();
             component_UserMgmt.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Component_EmplMgmt component_EmplMgmt = new Component_EmplMgmt();
+            component_EmplMgmt.ShowDialog();
+        }
     }
 }

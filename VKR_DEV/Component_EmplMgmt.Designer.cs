@@ -1,6 +1,6 @@
 ﻿namespace VKR_DEV
 {
-    partial class Component_UserMgmt
+    partial class Component_EmplMgmt
     {
         /// <summary>
         /// Required designer variable.
@@ -95,8 +95,8 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(794, 288);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellMouseClick += this.dataGridView1_CellMouseClick;
-            dataGridView1.CellMouseDown += this.dataGridView1_CellMouseDown;
+            dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
+            dataGridView1.CellMouseDown += dataGridView1_CellMouseDown;
             // 
             // contextMenuStrip1
             // 
@@ -109,7 +109,7 @@
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             удалитьToolStripMenuItem.Size = new Size(128, 22);
             удалитьToolStripMenuItem.Text = "Удалить";
-            удалитьToolStripMenuItem.Click += this.удалитьToolStripMenuItem_Click;
+            удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // статусToolStripMenuItem
             // 
@@ -123,21 +123,21 @@
             активенToolStripMenuItem.Name = "активенToolStripMenuItem";
             активенToolStripMenuItem.Size = new Size(132, 22);
             активенToolStripMenuItem.Text = "Активен";
-            активенToolStripMenuItem.Click += this.активенToolStripMenuItem_Click;
+            активенToolStripMenuItem.Click += активенToolStripMenuItem_Click;
             // 
             // неактивенToolStripMenuItem
             // 
             неактивенToolStripMenuItem.Name = "неактивенToolStripMenuItem";
             неактивенToolStripMenuItem.Size = new Size(132, 22);
             неактивенToolStripMenuItem.Text = "Неактивен";
-            неактивенToolStripMenuItem.Click += this.неактивенToolStripMenuItem_Click;
+            неактивенToolStripMenuItem.Click += неактивенToolStripMenuItem_Click;
             // 
             // изменитьToolStripMenuItem
             // 
             изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
             изменитьToolStripMenuItem.Size = new Size(128, 22);
             изменитьToolStripMenuItem.Text = "Изменить";
-            изменитьToolStripMenuItem.Click += this.изменитьToolStripMenuItem_Click;
+            изменитьToolStripMenuItem.Click += изменитьToolStripMenuItem_Click;
             // 
             // добавитьToolStripMenuItem
             // 
@@ -298,7 +298,7 @@
             button1.TabIndex = 12;
             button1.Text = "Добавить";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += this.button1_Click;
+            button1.Click += button1_Click;
             // 
             // textBox4
             // 
@@ -317,7 +317,7 @@
             button2.TabIndex = 14;
             button2.Text = "Сохранить";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += this.button2_Click;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -328,7 +328,7 @@
             button3.TabIndex = 15;
             button3.Text = "Отменить";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += this.button3_Click;
+            button3.Click += button3_Click;
             // 
             // comboBox2
             // 
@@ -339,15 +339,15 @@
             comboBox2.Size = new Size(232, 23);
             comboBox2.TabIndex = 16;
             // 
-            // Component_UserMgmt
+            // Component_EmplMgmt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
-            Name = "Component_UserMgmt";
-            Text = "Управление пользователя";
-            Load += this.Component_UserMgmt_Load;
+            Name = "Component_EmplMgmt";
+            Text = "Просмотр контактов";
+            Load += Component_EmplMgmt_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
